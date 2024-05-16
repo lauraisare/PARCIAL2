@@ -1,0 +1,13 @@
+vendor_name = ModelSim
+source_file = 1, C:/Users/laura/Documents/PARCIAL2-VHDL/moore_peaje/moore_peaje.vhd/moore_peaje.vhd
+source_file = 1, C:/Users/laura/Documents/PARCIAL2-VHDL/SEMAFORO_ENTRADA/semaforo_inicial.vhd
+source_file = 1, C:/Users/laura/Documents/PARCIAL2-VHDL/SEMAFORO_ENTRADA/db/semaforo_inicial.cbx.xml
+source_file = 1, c:/altera/13.1/quartus/libraries/vhdl/ieee/prmtvs_b.vhd
+source_file = 1, c:/altera/13.1/quartus/libraries/vhdl/ieee/prmtvs_p.vhd
+source_file = 1, c:/altera/13.1/quartus/libraries/vhdl/ieee/timing_b.vhd
+source_file = 1, c:/altera/13.1/quartus/libraries/vhdl/ieee/timing_p.vhd
+design_name = semaforo_inicial
+instance = comp, \RGB1[0]~output\, RGB1[0]~output, semaforo_inicial, 1
+instance = comp, \RGB1[1]~output\, RGB1[1]~output, semaforo_inicial, 1
+instance = comp, \RGB1[2]~output\, RGB1[2]~output, semaforo_inicial, 1
+instance = comp, \Sensor1~input\, Sensor1~input, semaforo_inicial, 1

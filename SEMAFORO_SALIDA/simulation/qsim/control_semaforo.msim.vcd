@@ -1,0 +1,58 @@
+$comment
+	File created using the following command:
+		vcd file control_semaforo.msim.vcd -direction
+$end
+$date
+	Sun May 05 23:07:58 2024
+$end
+$version
+	ModelSim Version 10.1d
+$end
+$timescale
+	1ps
+$end
+$scope module control_semaforo_vlg_vec_tst $end
+$var reg 1 ! back_sensor $end
+$var reg 1 " id $end
+$var wire 1 # RGB [2] $end
+$var wire 1 $ RGB [1] $end
+$var wire 1 % RGB [0] $end
+$var wire 1 & sampler $end
+$scope module i1 $end
+$var wire 1 ' gnd $end
+$var wire 1 ( vcc $end
+$var wire 1 ) unknown $end
+$var tri1 1 * devclrn $end
+$var tri1 1 + devpor $end
+$var tri1 1 , devoe $end
+$var wire 1 - RGB[0]~output_o $end
+$var wire 1 . RGB[1]~output_o $end
+$var wire 1 / RGB[2]~output_o $end
+$var wire 1 0 id~input_o $end
+$var wire 1 1 back_sensor~input_o $end
+$var wire 1 2 verde~0_combout $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0!
+1"
+0%
+1$
+0#
+x&
+0'
+1(
+x)
+1*
+1+
+1,
+0-
+1.
+0/
+10
+01
+12
+$end
+#1000000

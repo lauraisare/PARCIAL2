@@ -1,0 +1,27 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity control_semaforo is
+    Port (
+        IR_Sensor : in  STD_LOGIC; -- Sensor infrarrojo
+        RGB_LED   : out STD_LOGIC_VECTOR(2 downto 0) -- LED RGB (R, G, B)
+    );
+end control_semaforo;
+
+architecture control_semaforo_arch of control_semaforo is
+    signal red     : STD_LOGIC := '0'; -- Señal de control para LED rojo
+    signal green   : STD_LOGIC := '1'; -- Señal de control para LED verde
+begin
+    process(IR_Sensor)
+    begin
+        if IR_Sensor = '1' then -- Si se detecta el sensor infrarrojo
+            red   <= '1'; -- Encender rojo
+            green <= '0'; -- Apagar verde
+        else -- Si no se detecta el sensor infrarrojo
+            red   <= '0'; -- Apagar rojo
+            green <= '1'; -- Encender verde
+        end if;
+    end process;
+
+    RGB_LED <= red & green & '0'; -- LED azul apagado
+end control_semaforo_arch;

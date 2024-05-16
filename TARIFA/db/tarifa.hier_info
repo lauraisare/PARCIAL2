@@ -1,0 +1,18 @@
+|tarifa
+Categoria[0] => Mux0.IN5
+Categoria[0] => Mux1.IN5
+Categoria[0] => Tarifa[4].DATAIN
+Categoria[0] => Tarifa[3].DATAIN
+Categoria[0] => Tarifa[0].DATAIN
+Categoria[1] => Mux0.IN4
+Categoria[1] => Mux1.IN4
+Categoria[1] => Tarifa[6].DATAIN
+Tarifa[0] <= Categoria[0].DB_MAX_OUTPUT_PORT_TYPE
+Tarifa[1] <= <GND>
+Tarifa[2] <= Mux1.DB_MAX_OUTPUT_PORT_TYPE
+Tarifa[3] <= Categoria[0].DB_MAX_OUTPUT_PORT_TYPE
+Tarifa[4] <= Categoria[0].DB_MAX_OUTPUT_PORT_TYPE
+Tarifa[5] <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+Tarifa[6] <= Categoria[1].DB_MAX_OUTPUT_PORT_TYPE
+
+

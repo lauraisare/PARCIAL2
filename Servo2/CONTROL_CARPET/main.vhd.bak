@@ -1,0 +1,49 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity main is
+    Port ( clk : in STD_LOGIC;
+           reset : in STD_LOGIC;
+           sensor : in STD_LOGIC;
+           servo : out STD_LOGIC);
+end main;
+
+architecture Behavioral of main is
+    component pwm is
+        Port ( clk : in STD_LOGIC;
+               reset : in STD_LOGIC;
+               enable : in STD_LOGIC;
+               angle : in STD_LOGIC;
+               pwm_out : out STD_LOGIC);
+    end component;
+
+    component control is
+        Port ( clk : in STD_LOGIC;
+               reset : in STD_LOGIC;
+               sensor : in STD_LOGIC;
+               pwm_enable : out STD_LOGIC;
+               pwm_reset : out STD_LOGIC);
+    end component;
+
+    signal pwm_enable : STD_LOGIC;
+    signal pwm_reset : STD_LOGIC;
+    signal angle : STD_LOGIC;
+begin
+    u1: pwm
+        port map (
+            clk => clk,
+            reset => pwm_reset,
+            enable => pwm_enable,
+            angle => angle,
+            pwm_out => servo
+        );
+
+    u2: control
+        port map (
+            clk => clk,
+            reset => reset,
+            sensor => sensor,
+            pwm_enable => pwm_enable,
+            pwm_reset => pwm_reset
+        );
+end Behavioral;

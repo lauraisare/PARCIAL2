@@ -1,0 +1,60 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity contador is
+	port	(clock   : in std_logic;
+			 address : in std_logic_vector(3 downto 0);
+			 data_in : in std_logic_vector(6 downto 0);
+			 back_sensor : in std_logic;
+			 display : out STD_LOGIC_VECTOR (6 downto 0););
+end entity;
+
+architecture contador_arch of contador is
+
+	type RW_type is array (0 to 7) of std_logic_vector(6 downto 0);
+	
+	signal RW : RW_type; 
+	begin
+	
+	MEMORY: process (clock)
+		begin
+			if (clock'event and clock='1') then
+				if (back_sensor='1') then
+					RW(to_integer(unsigned(address))) <= data_in;
+				else
+					display <= RW(to_integer(unsigned(address)));
+				end if;
+			end if;
+	end process;
+	
+	 signal vehiculo_count : integer range 0 to 99 := 0;
+    signal tiempo : integer range 0 to 1000000 := 0;
+
+begin
+
+    -- Proceso de incremento del contador cuando se detecta un vehículo
+    contador: process(clock, back_sensor)
+    begin
+        if rising_edge(clock) then
+            if back_sensor = '1' then
+                data_in <= vehiculo_count + 1;
+            end if;
+        end if;
+    end process;
+	 
+	 
+	 reinicio: process(clock)
+    begin
+        if rising_edge(clock) then
+            if tiempo = 1000000 - 1 then
+                tiempo <= 0;
+                RW(to_integer(unsigned(address))) <= std_logic_vector(to_unsigned(data_in, 7));
+                vehiculo_count <= 0;
+            else
+                tiempo <= tiempo + 1;
+            end if;
+        end if;
+end process;
+		
+end contador_arch;

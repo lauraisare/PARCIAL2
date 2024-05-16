@@ -1,0 +1,65 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity moore_peaje is 
+port (clk, reset, tx : in std_logic;
+		talan_i, talan_f, sema_i, sema_f, led_rojo, alarma : out std_logic);
+		
+end moore_peaje;
+
+architecture behavior of moore_peaje is 
+
+	type estados is (inicio, vehiculo_detectado, salida_aprobada, salida_noaprobada, advertencia, reinicio_sistema);
+	signal estado_anterior, estado_siguiente: estados;
+begin 
+	process(estado_anterior, clk, tx)
+	begin
+		case estado_anterior is 
+		when inicio => talan_i and sema_i <= '1';
+			if (tx='1') then estado_siguiente <= vehiculo_detectado;
+			elsif (tx='0') then estado_siguiente <= inicio;
+			else estado_siguiente <= inicio;
+			end if;
+			
+		when vehiculo_detectado => talan_i and sema_i <= '0';
+			if (tx='1') then estado_siguiente <= salida_aprobada;
+			elsif (tx='0') then estado_siguiente <= salida_noaprobada;
+			else estado_siguiente <= salida_aprobada;
+			end if;
+			
+		when salida_aprobada => talan_f and sema_f <= '1';
+			if (tx='1') then estado_siguiente <= reinicio_sistema;
+			elsif (tx='0') then estado_siguiente <= salida_aprobada;
+			else estado_siguiente <= reinicio_sistema;
+			end if;
+			
+		when salida_noaprobada => talan_f and sema_f <= '0' and alarma <='1';
+			if (tx='1') then estado_siguiente <= salida_aprobada;
+			elsif (tx='0') then estado_siguiente <= salida_noaprobada;
+			else estado_siguiente <= salida_aprobada;
+			end if;
+			
+		when reinicio_sistema => talan_f and sema_f <= '0';
+			if (tx='1') then estado_siguiente <= inicio;
+			elsif (tx='0') then estado_siguiente <= reinicio_sistema;
+			else estado_siguiente <= inicio;
+			end if;
+			
+		when inicio => talan_i and sema_i <= '1';
+			if (tx='1') then estado_siguiente <= vehiculo_detectado;
+			elsif (tx='0') then estado_siguiente <= inicio;
+			else estado_siguiente <= inicio;
+			end if;
+			
+		end case;
+	end process;
+	
+	process(clk)
+	begin 
+		if (clk'event and clk='1') then 
+			estado_anterior <= estado_siguiente;
+		end if;
+	end process;
+end behavior;
+			
+	

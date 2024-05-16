@@ -1,0 +1,152 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith;
+use ieee.std_logic_unsigned;
+
+entity Peaje_total is 
+    port(  
+        clk : in std_logic;
+        reset : in std_logic;
+        front_sensor : in std_logic;
+        id: in std_logic;
+        identificacion : in std_logic_vector(4 downto 0);
+        back_sensor: in std_logic;
+        semaforo_rojo_entrada : out std_logic;
+        semaforo_verde_entrada : out std_logic;
+        semaforo_rojo_salida : out std_logic;
+        semaforo_verde_salida : out std_logic;
+        talanquera_inicial : out std_logic;
+        talanquera_final : out std_logic;
+        led_verde : out std_logic;
+        led_rojo : out std_logic;
+        alarm : out std_logic;
+		  categoria : out std_logic_vector(1 downto 0);
+        tarifa : out std_logic_vector(2 downto 0);
+        vehiculos : out std_logic_vector(6 downto 0)
+    );
+end PeajeCompleto;
+
+architecture PeajeCompleto_arch of PeajeCompleto is
+  
+   -- signal categoria_int : std_logic_vector(1 downto 0);
+  --  signal semaforo_salida_int : std_logic;
+	-- signal contador_out_int : std_LOGIC_VECTOR(3 downto 0);
+	 
+
+component sensor_front 
+    Port (
+          IR_Sensor1 : in  STD_LOGIC; 
+		    talanquera1: out STD_LOGIC;
+			 led_rojo1: out STD_LOGIC;
+			 Led_verde1:out STD_LOGIC
+			 
+    );
+end component;	 
+
+component sensor_back 
+    Port (
+          IR_Sensor2 : in  STD_LOGIC; 
+		    talanquera2: out STD_LOGIC;
+			 led_rojo2: out STD_LOGIC;
+			 Led_verde2:out STD_LOGIC
+			 
+    );
+end component;	 
+
+component categoria 
+    
+    port (
+        front_sensor : in std_logic;  
+        identificacion : in std_logic_vector(4 downto 0);  
+        categoria : out std_logic_vector(1 downto 0)
+    );
+end component;
+
+
+component contador 
+    port (
+        clock       : in std_logic;
+        address     : in std_logic_vector(3 downto 0);
+        back_sensor : in std_logic;
+        vehiculos     : out std_logic_vector(6 downto 0)
+    );
+end component;
+
+component moore_peaje 
+port (clk, reset, tx : in std_logic;
+		talan_i, talan_f, sema_i, sema_f, led_rojo, alarma, f : out std_logic);
+		    
+end component;
+
+
+component tarifa
+    Port (
+        Categoria: in std_logic_vector(1 downto 0);
+        Tarifa : out std_logic_vector(6 downto 0)
+    );
+end component;
+
+
+begin
+
+    Categoria_peaje : Controlador_semaforo
+port map (
+    barrera_cerrada => barrera_cerrada,
+    carril_cerrado => carril_cerrado,
+    semaforo_rojo => semaforo_rojo_entrada,
+    semaforo_verde => semaforo_verde_entrada
+);
+
+Sensor : FrontSensor
+port map (
+    clk => clk,
+    reset => reset,
+    front_sensor => front_sensor,
+    id_valida => id_valida,
+    identificacion => identificacion,
+    barrera_inicial => barrera_inicial,
+    barrera_final => barrera_final,
+    categoria => categoria_int,
+    led_verde => led_verde,
+    led_rojo => led_rojo,
+    alarm => alarm
+);
+
+SemaforoSalida : Semaforo_salida
+port map (
+    SemaforoSalida => semaforo_salida_int,
+    semaforo_rojo => semaforo_rojo_salida,
+    semaforo_verde => semaforo_verde_salida
+);
+
+Pago : PagoPeaje
+port map (
+    Categoria => categoria_int,
+    Pago => Pago_out,
+    Tarifa => tarifa,
+    UsuarioPagado => usuario_pagado,
+    SemaforoSalida => semaforo_salida_int
+);
+
+Contador_5seg : Contador5
+    port map (
+        front_sensor => front_sensor,
+        back_sensor => back_sensor,
+		  contador_out => contador_out_int
+   );
+ 
+Contador_1min : Contador1
+port map (
+    reset => reset,
+    front_sensor => front_sensor,
+    Contador_vehiculo => contador_vehiculo
+);
+
+    contador_out <= contador_out_int;
+    categoria <= categoria_int;
+    semaforo_out <= semaforo_salida_int;
+	 
+	 A2: decoBCD port map (IA => contador_out_int, F=>contador_out); 
+    
+
+end PeajeCompleto_arch;

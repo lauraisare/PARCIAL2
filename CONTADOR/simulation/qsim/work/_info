@@ -1,0 +1,81 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Users\laura\Documents\PARCIAL2-VHDL\CONTADOR\simulation\qsim
+vcontador
+Z1 !s100 YQYIP1SQHeQBoiO]:0a8D3
+Z2 IQke=6]8T7dK:S6[R8i<MY2
+Z3 V5m=o:aiVUQGGdoL?UT@5K3
+Z4 dC:\Users\laura\Documents\PARCIAL2-VHDL\CONTADOR\simulation\qsim
+Z5 w1714965360
+Z6 8contador.vo
+Z7 Fcontador.vo
+L0 31
+Z8 OV;L;10.1d;51
+r1
+31
+Z9 !s90 -work|work|contador.vo|
+Z10 o-work work -O0
+!i10b 1
+!s85 0
+Z11 !s108 1714965361.945000
+Z12 !s107 contador.vo|
+!s101 -O0
+vcontador_vlg_check_tst
+Z13 I5AHICdUFm;Mmb8D59N0bE1
+Z14 VEINdZUeY:8Y:iSi>:]X2O2
+R4
+Z15 w1714964855
+Z16 8Waveform4.vwf.vt
+Z17 FWaveform4.vwf.vt
+L0 61
+R8
+r1
+31
+Z18 !s108 1714964857.664000
+Z19 !s107 Waveform4.vwf.vt|
+Z20 !s90 -work|work|Waveform4.vwf.vt|
+R10
+Z21 !s100 eYHj@zJ_3A0T:LaGh<<_M3
+!i10b 1
+!s85 0
+!s101 -O0
+vcontador_vlg_sample_tst
+Z22 IKRceUVNgD9SRB`ML7gAIg0
+Z23 Vi0QVJYKa6>BGgKLC:KiaK2
+R4
+R15
+R16
+R17
+L0 29
+R8
+r1
+31
+R18
+R19
+R20
+R10
+Z24 !s100 =W[[J>GKQ^NMNC1<Ej3fC2
+!i10b 1
+!s85 0
+!s101 -O0
+vcontador_vlg_vec_tst
+!i10b 1
+!s100 @IXS^6cD:jBMibHeMTU2[0
+I]3EIBzRTo[4K<7^NbSKJz3
+Z25 Vg7eM`4C4en1cUe:c[RGT<3
+R4
+w1714965359
+Z26 8Waveform1.vwf.vt
+Z27 FWaveform1.vwf.vt
+L0 29
+R8
+r1
+!s85 0
+31
+!s108 1714965362.106000
+!s107 Waveform1.vwf.vt|
+Z28 !s90 -work|work|Waveform1.vwf.vt|
+!s101 -O0
+R10

@@ -1,0 +1,12 @@
+vendor_name = ModelSim
+source_file = 1, C:/Users/laura/Documents/PARCIAL2-VHDL/SEMAFORO/control_semaforo.vhd
+source_file = 1, C:/Users/laura/Documents/PARCIAL2-VHDL/SEMAFORO/db/control_semaforo.cbx.xml
+source_file = 1, c:/altera/13.1/quartus/libraries/vhdl/ieee/prmtvs_b.vhd
+source_file = 1, c:/altera/13.1/quartus/libraries/vhdl/ieee/prmtvs_p.vhd
+source_file = 1, c:/altera/13.1/quartus/libraries/vhdl/ieee/timing_b.vhd
+source_file = 1, c:/altera/13.1/quartus/libraries/vhdl/ieee/timing_p.vhd
+design_name = control_semaforo
+instance = comp, \RGB[0]~output\, RGB[0]~output, control_semaforo, 1
+instance = comp, \RGB[1]~output\, RGB[1]~output, control_semaforo, 1
+instance = comp, \RGB[2]~output\, RGB[2]~output, control_semaforo, 1
+instance = comp, \Sensor1~input\, Sensor1~input, control_semaforo, 1

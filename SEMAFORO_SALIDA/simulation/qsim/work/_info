@@ -1,0 +1,81 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Users\laura\Documents\PARCIAL2-VHDL\SEMAFORO\simulation\qsim
+vcontrol_semaforo
+Z1 !s100 1hJd1RlY6dALI]g7IRR5>1
+Z2 I0X>@eCG[8NZTDY07RH>lW3
+Z3 VR`CI6GGS6ZQBj>WdD@J>C1
+Z4 dC:\Users\laura\Documents\PARCIAL2-VHDL\SEMAFORO_SALIDA\simulation\qsim
+Z5 w1714968477
+Z6 8control_semaforo.vo
+Z7 Fcontrol_semaforo.vo
+L0 31
+Z8 OV;L;10.1d;51
+r1
+31
+Z9 !s90 -work|work|control_semaforo.vo|
+Z10 o-work work -O0
+!i10b 1
+!s85 0
+Z11 !s108 1714968478.226000
+Z12 !s107 control_semaforo.vo|
+!s101 -O0
+vcontrol_semaforo_vlg_check_tst
+!i10b 1
+Z13 !s100 @[29=e@Q7?KI==T>0oe?c0
+Z14 I=P5_jS81FJBa[EMBTmAiT0
+Z15 VIGL@7nJBYcT^@6aJ?3m2T0
+R4
+Z16 w1714968476
+Z17 8Waveform10.vwf.vt
+Z18 FWaveform10.vwf.vt
+L0 59
+R8
+r1
+!s85 0
+31
+Z19 !s108 1714968478.284000
+Z20 !s107 Waveform10.vwf.vt|
+Z21 !s90 -work|work|Waveform10.vwf.vt|
+!s101 -O0
+R10
+vcontrol_semaforo_vlg_sample_tst
+!i10b 1
+Z22 !s100 <1K^8V>LjdLhGcSnGJ:h;2
+Z23 I^W8n7j8b]o;l>OHc0Q>6z0
+Z24 VoE:;:ak6n4lij_G`VTQ5a3
+R4
+R16
+R17
+R18
+L0 29
+R8
+r1
+!s85 0
+31
+R19
+R20
+R21
+!s101 -O0
+R10
+vcontrol_semaforo_vlg_vec_tst
+!i10b 1
+!s100 JbH<bE7_Dl4ANLh?8EI7]2
+IGWc`0KH3@Wkg31Ve1WjBQ2
+Z25 V[KEhPFGSn5Hh[YRPi_:j_2
+R4
+R16
+R17
+R18
+Z26 L0 189
+R8
+r1
+!s85 0
+31
+R19
+R20
+R21
+!s101 -O0
+R10

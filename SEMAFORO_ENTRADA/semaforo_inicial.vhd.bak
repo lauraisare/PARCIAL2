@@ -1,0 +1,27 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity semaforo_inicial is
+    Port (
+        Sensor1: in  STD_LOGIC; 
+        RGB1   : out STD_LOGIC_VECTOR(2 downto 0)
+    );
+end semaforo_inicial;
+
+architecture semaforo_inicial_arch of semaforo_inicial is
+    signal rojo     : STD_LOGIC := '1'; 
+    signal verde   : STD_LOGIC := '0'; 
+begin
+    process(Sensor1)
+    begin
+        if Sensor1 = '1' then 
+            rojo   <= '1'; 
+            verde <= '0'; 
+        else 
+            rojo   <= '0'; 
+            verde <= '1'; 
+        end if;
+    end process;
+
+    RGB1 <= rojo & verde & '0'; 
+end semaforo_inicial_arch;

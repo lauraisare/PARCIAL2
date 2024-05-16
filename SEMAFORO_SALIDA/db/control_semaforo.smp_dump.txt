@@ -1,0 +1,9 @@
+
+State Machine - |control_semaforo|moore_peaje:A0|estado_presente
+Name estado_presente.reinicio_sistema estado_presente.advertencia estado_presente.salida_noaprobada estado_presente.salida_aprobada estado_presente.vehiculo_detectado estado_presente.inicio 
+estado_presente.inicio 0 0 0 0 0 0 
+estado_presente.vehiculo_detectado 0 0 0 0 1 1 
+estado_presente.salida_aprobada 0 0 0 1 0 1 
+estado_presente.salida_noaprobada 0 0 1 0 0 1 
+estado_presente.advertencia 0 1 0 0 0 1 
+estado_presente.reinicio_sistema 1 0 0 0 0 1 

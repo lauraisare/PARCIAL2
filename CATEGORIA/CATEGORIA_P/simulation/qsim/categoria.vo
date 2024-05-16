@@ -1,0 +1,197 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// VENDOR "Altera"
+// PROGRAM "Quartus II 64-Bit"
+// VERSION "Version 13.1.0 Build 162 10/23/2013 SJ Web Edition"
+
+// DATE "05/05/2024 01:16:46"
+
+// 
+// Device: Altera EP3C16F484C6 Package FBGA484
+// 
+
+// 
+// This Verilog file should be used for ModelSim-Altera (Verilog) only
+// 
+
+`timescale 1 ps/ 1 ps
+
+module categoria (
+	front_sensor,
+	identificacion,
+	categoria);
+input 	front_sensor;
+input 	[4:0] identificacion;
+output 	[1:0] categoria;
+
+// Design Ports Information
+// identificacion[0]	=>  Location: PIN_A16,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// identificacion[1]	=>  Location: PIN_F9,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// identificacion[2]	=>  Location: PIN_W17,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// categoria[0]	=>  Location: PIN_M5,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// categoria[1]	=>  Location: PIN_J1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// front_sensor	=>  Location: PIN_P2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// identificacion[3]	=>  Location: PIN_P7,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// identificacion[4]	=>  Location: PIN_L6,	 I/O Standard: 2.5 V,	 Current Strength: Default
+
+
+wire gnd;
+wire vcc;
+wire unknown;
+
+assign gnd = 1'b0;
+assign vcc = 1'b1;
+assign unknown = 1'bx;
+
+tri1 devclrn;
+tri1 devpor;
+tri1 devoe;
+wire \identificacion[0]~input_o ;
+wire \identificacion[1]~input_o ;
+wire \identificacion[2]~input_o ;
+wire \categoria[0]~output_o ;
+wire \categoria[1]~output_o ;
+wire \identificacion[3]~input_o ;
+wire \front_sensor~input_o ;
+wire \categoria~0_combout ;
+wire \identificacion[4]~input_o ;
+wire \categoria~1_combout ;
+
+
+// Location: IOOBUF_X0_Y11_N9
+cycloneiii_io_obuf \categoria[0]~output (
+	.i(\categoria~0_combout ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\categoria[0]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \categoria[0]~output .bus_hold = "false";
+defparam \categoria[0]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X0_Y20_N9
+cycloneiii_io_obuf \categoria[1]~output (
+	.i(\categoria~1_combout ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\categoria[1]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \categoria[1]~output .bus_hold = "false";
+defparam \categoria[1]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOIBUF_X0_Y5_N1
+cycloneiii_io_ibuf \identificacion[3]~input (
+	.i(identificacion[3]),
+	.ibar(gnd),
+	.o(\identificacion[3]~input_o ));
+// synopsys translate_off
+defparam \identificacion[3]~input .bus_hold = "false";
+defparam \identificacion[3]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X0_Y11_N15
+cycloneiii_io_ibuf \front_sensor~input (
+	.i(front_sensor),
+	.ibar(gnd),
+	.o(\front_sensor~input_o ));
+// synopsys translate_off
+defparam \front_sensor~input .bus_hold = "false";
+defparam \front_sensor~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: LCCOMB_X1_Y14_N16
+cycloneiii_lcell_comb \categoria~0 (
+// Equation(s):
+// \categoria~0_combout  = (\identificacion[3]~input_o  & \front_sensor~input_o )
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(\identificacion[3]~input_o ),
+	.datad(\front_sensor~input_o ),
+	.cin(gnd),
+	.combout(\categoria~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \categoria~0 .lut_mask = 16'hF000;
+defparam \categoria~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: IOIBUF_X0_Y13_N1
+cycloneiii_io_ibuf \identificacion[4]~input (
+	.i(identificacion[4]),
+	.ibar(gnd),
+	.o(\identificacion[4]~input_o ));
+// synopsys translate_off
+defparam \identificacion[4]~input .bus_hold = "false";
+defparam \identificacion[4]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: LCCOMB_X1_Y14_N2
+cycloneiii_lcell_comb \categoria~1 (
+// Equation(s):
+// \categoria~1_combout  = (\front_sensor~input_o  & \identificacion[4]~input_o )
+
+	.dataa(gnd),
+	.datab(\front_sensor~input_o ),
+	.datac(\identificacion[4]~input_o ),
+	.datad(gnd),
+	.cin(gnd),
+	.combout(\categoria~1_combout ),
+	.cout());
+// synopsys translate_off
+defparam \categoria~1 .lut_mask = 16'hC0C0;
+defparam \categoria~1 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: IOIBUF_X30_Y29_N29
+cycloneiii_io_ibuf \identificacion[0]~input (
+	.i(identificacion[0]),
+	.ibar(gnd),
+	.o(\identificacion[0]~input_o ));
+// synopsys translate_off
+defparam \identificacion[0]~input .bus_hold = "false";
+defparam \identificacion[0]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X7_Y29_N22
+cycloneiii_io_ibuf \identificacion[1]~input (
+	.i(identificacion[1]),
+	.ibar(gnd),
+	.o(\identificacion[1]~input_o ));
+// synopsys translate_off
+defparam \identificacion[1]~input .bus_hold = "false";
+defparam \identificacion[1]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X35_Y0_N8
+cycloneiii_io_ibuf \identificacion[2]~input (
+	.i(identificacion[2]),
+	.ibar(gnd),
+	.o(\identificacion[2]~input_o ));
+// synopsys translate_off
+defparam \identificacion[2]~input .bus_hold = "false";
+defparam \identificacion[2]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+assign categoria[0] = \categoria[0]~output_o ;
+
+assign categoria[1] = \categoria[1]~output_o ;
+
+endmodule

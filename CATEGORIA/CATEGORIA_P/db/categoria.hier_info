@@ -1,0 +1,12 @@
+|categoria
+front_sensor => categoria.OUTPUTSELECT
+front_sensor => categoria.OUTPUTSELECT
+identificacion[0] => ~NO_FANOUT~
+identificacion[1] => ~NO_FANOUT~
+identificacion[2] => ~NO_FANOUT~
+identificacion[3] => categoria.DATAB
+identificacion[4] => categoria.DATAB
+categoria[0] << categoria.DB_MAX_OUTPUT_PORT_TYPE
+categoria[1] << categoria.DB_MAX_OUTPUT_PORT_TYPE
+
+
